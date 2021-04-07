@@ -1,6 +1,7 @@
 var cartas = [];
 var alumne
 var lugarAsignado
+var comision
 
   // Your web app's Firebase configuration
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -33,7 +34,7 @@ var lugarAsignado
         var lugar= registro[k].lugar
 
         console.log(nombre,lugar)
-        document.getElementById("demo").innerHTML += (nombre +" " + lugar+"<br>")
+        document.getElementById("demo").innerHTML += (nombre +" " + lugar+ comision + "<br>")
     }
    
   }
@@ -48,13 +49,17 @@ opcionesImagenes=["img/01.png","img/02.png","img/03.png","img/04.png", "img/05.p
 function SortearCartas(){
   
   var vacio = document.forms["FormularioAlumne"]["text_id"].value;
+  var vacioC= document.forms["FormularioAlumne"]["text_comi"].value;
   if(vacio == ""){
-    alert("completa tu nombre y apellido porfa")
+    alert("Completa tu Nombre y Apellido porfi")
+  }else if (vacioC == ""){
+    alert("Completa la comisión")
   }else{
 
   
     
         alumne = document.getElementById("text_id").value;
+        comision=document.getElementById("text_comi").value;
         document.getElementById("FormularioAlumne").hidden=true
         var posicion=Math.floor(Math.random()*18);
         var posicion2=Math.floor(Math.random()*18);
@@ -109,8 +114,9 @@ function SortearLugar(){
 
 function EnviarDatos(){
     var data={
-      nombre:alumne,
-      lugar:lugarAsignado,
+      Nombre:alumne,
+      Lugar: lugarAsignado,
+      Comisión: comision
   }
   ref.push(data);
 
